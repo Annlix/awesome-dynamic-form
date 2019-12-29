@@ -86,6 +86,17 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@dllcn/js-shortid/lib/js-shortid.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@dllcn/js-shortid/lib/js-shortid.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;(function(root, factory){\n  'use strict';\n  if (true) {\n    !(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),\n\t\t\t\t__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?\n\t\t\t\t(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :\n\t\t\t\t__WEBPACK_AMD_DEFINE_FACTORY__),\n\t\t\t\t__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));\n  } else { var self, _previousRoot; }\t\n}(this, function(){\n  var __initime = 1460332800000,//2016-04-11\n    __symbols = ['0','1','2','3','4','5','6','7','8','9',\n\t  'a','b','c','d','e','f','g','h','i','j',\n\t  'k','l','m','n','o','p','q','r','s','t',\n\t  'u','v','w','x','y','z','A','B','C','D',\n\t  'E','F','G','H','I','J','K','L','M','N',\n\t  'O','P','Q','R','S','T','U','V','W','X','Y','Z'],\n\t__base = 62,\n\t__paddingLeft = function(padding, val) {\n\t  return (padding+val).slice(-padding.length);\t\n\t},\n    ShortId = function(opt) {\n\t  this._opt = opt||{};\n    };\n\tShortId.prototype = {\n\t  _toBase: function (decimal, base) {\n\t\tvar opt=this._opt,\n\t\t  symbols=opt.symbols||__symbols,\n\t\t  conversion = \"\";\n\t\tif (base > symbols.length || base <= 1) {\n\t\t\treturn false;\n\t\t}\n\t\twhile (decimal >= 1) {\n\t\t  conversion = symbols[(decimal - (base * Math.floor(decimal / base)))] + \n\t\t    conversion;\n\t\t  decimal = Math.floor(decimal / base);\n\t\t}\n\t\treturn (base < 11) ? parseInt(conversion) : conversion;\n\t  },\n\t  _salts: function() {\n\t    var self=this,opt=self._opt,salts=opt.salts||2,\n\t\t  ret='';\n\t\tfor(var i=0;i<salts;i++) {\n\t\t  var salt = Math.floor(Math.random()*3844);\n\t\t  ret += __paddingLeft('00',self._toBase(salt, __base));\n\t\t}\n\t\treturn ret;\n\t  },\n\t  gen: function() {\n\t    var self=this,opt=self._opt,interval=opt.interval||1,\n\t\t  initime = opt.initTime||__initime,\n\t\t  //default millisecond since init time\n\t\t  elapsed = interval>0?Math.floor((new Date().getTime()-initime)/interval):0,\n\t\t  salts = self._salts();\n\t\treturn elapsed===0?salts:(self._toBase(elapsed, __base)+salts);\n\t  }\n\t};\n\treturn {\n\t  inst:function(opt){\n\t\treturn new ShortId(opt);\n\t  },\n\t  gen: function(opt) {\n\t\treturn new ShortId(opt).gen();\n\t  },\n\t  uuid: function() {\n\t\treturn new ShortId({salts:4}).gen();\n\t  }\n\t};\n}));\n\n//# sourceURL=webpack:///./node_modules/@dllcn/js-shortid/lib/js-shortid.js?");
+
+/***/ }),
+
 /***/ "./node_modules/process/browser.js":
 /*!*****************************************!*\
   !*** ./node_modules/process/browser.js ***!
@@ -119,6 +130,66 @@ eval("/* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/index.js?!./src/App.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_AdForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/AdForm.vue */ \"./src/components/AdForm.vue\");\n//\n//\n//\n//\n//\n//\n\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  components: {\r\n    AdForm: _components_AdForm_vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\r\n  },\r\n  data(){\r\n    return {\r\n      forms: [\r\n        {\r\n          guid: this.guid.gen(),\r\n          label: { name: '颜色选择器' },\r\n          type: 'color',\r\n          placeholder: '请选择颜色',\r\n        },\r\n        {\r\n          guid: this.guid.gen(),\r\n          label: { name: '日期选择器' },\r\n          type: 'date',\r\n          placeholder: '请选择日期'\r\n        },\r\n        {\r\n          guid: this.guid.gen(),\r\n          label: { name: '日期时间选择器' },\r\n          type: 'datetime',\r\n          placeholder: '请选择日期时间'\r\n        },\r\n        {\r\n          guid: this.guid.gen(),\r\n          label: { name: '日期时间选择器本地' },\r\n          type: 'datetime-local',\r\n          placeholder:'请选择日期时间'\r\n        },\r\n        {\r\n          guid: this.guid.gen(),\r\n          label: { name: '邮箱' },\r\n          type: 'email',\r\n          placeholder: '请输入邮箱'\r\n        },\r\n        {\r\n          guid: this.guid.gen(),\r\n          label: { name: '文件' },\r\n          type: 'file',\r\n          placeholder: '请选择文件'\r\n        },\r\n        {\r\n          guid: this.guid.gen(),\r\n          label: { name: '隐藏域' },\r\n          type: 'hidden',\r\n          placeholder: '这是隐藏域'\r\n        },\r\n        {\r\n          guid: this.guid.gen(),\r\n          label: { name: '图片' },\r\n          type: 'image',\r\n          placeholder: '请选择图片',\r\n          mime: 'image/*'\r\n        },\r\n        {\r\n          guid: this.guid.gen(),\r\n          label: { name: '月份选择器' },\r\n          type: 'month',\r\n          placeholder: '请选择月份'\r\n        },\r\n        {\r\n          guid: this.guid.gen(),\r\n          label: { name: '密码' },\r\n          type: 'password',\r\n          placeholder: '请输入密码'\r\n        },\r\n        {\r\n          guid: this.guid.gen(),\r\n          label: { name: '数字输入框' },\r\n          type: 'number',\r\n          placeholder: '请输入数字'\r\n        },\r\n        {\r\n          guid: this.guid.gen(),\r\n          label: { name: '单选' },\r\n          type: 'radio',\r\n          placeholder: '请选择'\r\n        },\r\n        {\r\n          guid: this.guid.gen(),\r\n          label: { name: '滑块' },\r\n          type: 'range',\r\n          placeholder: '这是滑块'\r\n        },\r\n        {\r\n          guid: this.guid.gen(),\r\n          label: { name: '搜索' },\r\n          type: 'searchs',\r\n          placeholder: '请输入关键词',\r\n          readonly: false\r\n        },\r\n        {\r\n          guid: this.guid.gen(),\r\n          label: { name: '电话' },\r\n          type: 'tel',\r\n          placeholder: '请输入电话号码'\r\n        },\r\n        {\r\n          guid: this.guid.gen(),\r\n          label: { name: '文本框' },\r\n          type: 'text',\r\n          placeholder: '请输入文本',\r\n          readonly: true,\r\n        },\r\n        {\r\n          guid: this.guid.gen(),\r\n          label: { name: '时间' },\r\n          type: 'time',\r\n          placeholder: '请选择时间'\r\n        },\r\n        {\r\n          guid: this.guid.gen(),\r\n          label: { name: '网址' },\r\n          type: 'url',\r\n          placeholder: '请输入网址'\r\n        },\r\n        {\r\n          guid: this.guid.gen(),\r\n          label: { name: '周' },\r\n          type: 'week',\r\n          placeholder: '请选择周'\r\n        }\r\n      ]\r\n    }\r\n  }\r\n});\r\n\n\n//# sourceURL=webpack:///./src/App.vue?./node_modules/vue-loader/lib??vue-loader-options");
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/index.js?!./src/components/AdForm.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib??vue-loader-options!./src/components/AdForm.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  name: 'AdForm',\r\n  data () {\r\n    return {\r\n    }\r\n  },\r\n  props: {\r\n    forms: Array\r\n  }\r\n});\r\n\n\n//# sourceURL=webpack:///./src/components/AdForm.vue?./node_modules/vue-loader/lib??vue-loader-options");
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/App.vue?vue&type=template&id=7ba5bd90&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=7ba5bd90& ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"render\", function() { return render; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"staticRenderFns\", function() { return staticRenderFns; });\nvar render = function() {\n  var _vm = this\n  var _h = _vm.$createElement\n  var _c = _vm._self._c || _h\n  return _c(\"div\", [_c(\"ad-form\", { attrs: { forms: _vm.forms } })], 1)\n}\nvar staticRenderFns = []\nrender._withStripped = true\n\n\n\n//# sourceURL=webpack:///./src/App.vue?./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options");
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/AdForm.vue?vue&type=template&id=f2b76392&":
+/*!************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/components/AdForm.vue?vue&type=template&id=f2b76392& ***!
+  \************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"render\", function() { return render; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"staticRenderFns\", function() { return staticRenderFns; });\nvar render = function() {\n  var _vm = this\n  var _h = _vm.$createElement\n  var _c = _vm._self._c || _h\n  return _c(\"div\", [\n    _c(\n      \"form\",\n      _vm._l(_vm.forms, function(item) {\n        return _c(\n          \"div\",\n          {\n            directives: [\n              {\n                name: \"show\",\n                rawName: \"v-show\",\n                value: item.type !== \"hidden\",\n                expression: \"item.type !== 'hidden'\"\n              }\n            ],\n            key: item.guid\n          },\n          [\n            _c(\"label\", [\n              _vm._v(\"\\n        \" + _vm._s(item.label.name) + \" \\n        \"),\n              item.type !== \"file\" && !item.readonly\n                ? _c(\"input\", {\n                    attrs: {\n                      type: item.type ? item.type : \"text\",\n                      placeholder: item.placeholder,\n                      autofocus: item.autofocus,\n                      disabled: item.disabled,\n                      size: item.size,\n                      maxlength: item.maxLength,\n                      minlength: item.minLength,\n                      pattern: item.pattern,\n                      spellcheck: item.spellcheck,\n                      autocomplete: item.autocomplete,\n                      name: item.name\n                    },\n                    domProps: { value: item.value }\n                  })\n                : _vm._e(),\n              _vm._v(\" \"),\n              item.readonly\n                ? _c(\"input\", {\n                    attrs: {\n                      type: item.type ? item.type : \"text\",\n                      placeholder: item.placeholder,\n                      autofocus: item.autofocus,\n                      disabled: item.disabled,\n                      size: item.size,\n                      maxlength: item.maxLength,\n                      minlength: item.minLength,\n                      pattern: item.pattern,\n                      spellcheck: item.spellcheck,\n                      autocomplete: item.autocomplete,\n                      readonly: \"\"\n                    },\n                    domProps: { value: item.value }\n                  })\n                : _vm._e(),\n              _vm._v(\" \"),\n              item.type === \"file\"\n                ? _c(\"input\", { attrs: { type: \"file\", accept: \"item.mime\" } })\n                : _vm._e()\n            ])\n          ]\n        )\n      }),\n      0\n    )\n  ])\n}\nvar staticRenderFns = []\nrender._withStripped = true\n\n\n\n//# sourceURL=webpack:///./src/components/AdForm.vue?./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options");
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return normalizeComponent; });\n/* globals __VUE_SSR_CONTEXT__ */\n\n// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).\n// This module is a runtime utility for cleaner component module output and will\n// be included in the final webpack user bundle.\n\nfunction normalizeComponent (\n  scriptExports,\n  render,\n  staticRenderFns,\n  functionalTemplate,\n  injectStyles,\n  scopeId,\n  moduleIdentifier, /* server only */\n  shadowMode /* vue-cli only */\n) {\n  // Vue.extend constructor export interop\n  var options = typeof scriptExports === 'function'\n    ? scriptExports.options\n    : scriptExports\n\n  // render functions\n  if (render) {\n    options.render = render\n    options.staticRenderFns = staticRenderFns\n    options._compiled = true\n  }\n\n  // functional template\n  if (functionalTemplate) {\n    options.functional = true\n  }\n\n  // scopedId\n  if (scopeId) {\n    options._scopeId = 'data-v-' + scopeId\n  }\n\n  var hook\n  if (moduleIdentifier) { // server build\n    hook = function (context) {\n      // 2.3 injection\n      context =\n        context || // cached call\n        (this.$vnode && this.$vnode.ssrContext) || // stateful\n        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional\n      // 2.2 with runInNewContext: true\n      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {\n        context = __VUE_SSR_CONTEXT__\n      }\n      // inject component styles\n      if (injectStyles) {\n        injectStyles.call(this, context)\n      }\n      // register component module identifier for async chunk inferrence\n      if (context && context._registeredComponents) {\n        context._registeredComponents.add(moduleIdentifier)\n      }\n    }\n    // used by ssr in case component is cached and beforeCreate\n    // never gets called\n    options._ssrRegister = hook\n  } else if (injectStyles) {\n    hook = shadowMode\n      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }\n      : injectStyles\n  }\n\n  if (hook) {\n    if (options.functional) {\n      // for template-only hot-reload because in that case the render fn doesn't\n      // go through the normalizer\n      options._injectStyles = hook\n      // register for functioal component in vue file\n      var originalRender = options.render\n      options.render = function renderWithStyleInjection (h, context) {\n        hook.call(context)\n        return originalRender(h, context)\n      }\n    } else {\n      // inject component registration as beforeCreate hook\n      var existing = options.beforeCreate\n      options.beforeCreate = existing\n        ? [].concat(existing, hook)\n        : [hook]\n    }\n  }\n\n  return {\n    exports: scriptExports,\n    options: options\n  }\n}\n\n\n//# sourceURL=webpack:///./node_modules/vue-loader/lib/runtime/componentNormalizer.js?");
+
+/***/ }),
+
 /***/ "./node_modules/vue/dist/vue.runtime.esm.js":
 /*!**************************************************!*\
   !*** ./node_modules/vue/dist/vue.runtime.esm.js ***!
@@ -146,10 +217,71 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 /*!*********************!*\
   !*** ./src/App.vue ***!
   \*********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("throw new Error(\"Module parse failed: Unexpected token (1:0)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n> <template>\\n|   <h1>Awesome dynamic form</h1>\\n| </template>\");\n\n//# sourceURL=webpack:///./src/App.vue?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _App_vue_vue_type_template_id_7ba5bd90___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.vue?vue&type=template&id=7ba5bd90& */ \"./src/App.vue?vue&type=template&id=7ba5bd90&\");\n/* harmony import */ var _App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue?vue&type=script&lang=js& */ \"./src/App.vue?vue&type=script&lang=js&\");\n/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ \"./node_modules/vue-loader/lib/runtime/componentNormalizer.js\");\n\n\n\n\n\n/* normalize component */\n\nvar component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(\n  _App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  _App_vue_vue_type_template_id_7ba5bd90___WEBPACK_IMPORTED_MODULE_0__[\"render\"],\n  _App_vue_vue_type_template_id_7ba5bd90___WEBPACK_IMPORTED_MODULE_0__[\"staticRenderFns\"],\n  false,\n  null,\n  null,\n  null\n  \n)\n\n/* hot reload */\nif (false) { var api; }\ncomponent.options.__file = \"src/App.vue\"\n/* harmony default export */ __webpack_exports__[\"default\"] = (component.exports);\n\n//# sourceURL=webpack:///./src/App.vue?");
+
+/***/ }),
+
+/***/ "./src/App.vue?vue&type=script&lang=js&":
+/*!**********************************************!*\
+  !*** ./src/App.vue?vue&type=script&lang=js& ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../node_modules/vue-loader/lib??vue-loader-options!./App.vue?vue&type=script&lang=js& */ \"./node_modules/vue-loader/lib/index.js?!./src/App.vue?vue&type=script&lang=js&\");\n/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__[\"default\"] = (_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[\"default\"]); \n\n//# sourceURL=webpack:///./src/App.vue?");
+
+/***/ }),
+
+/***/ "./src/App.vue?vue&type=template&id=7ba5bd90&":
+/*!****************************************************!*\
+  !*** ./src/App.vue?vue&type=template&id=7ba5bd90& ***!
+  \****************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_7ba5bd90___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../node_modules/vue-loader/lib??vue-loader-options!./App.vue?vue&type=template&id=7ba5bd90& */ \"./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/App.vue?vue&type=template&id=7ba5bd90&\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"render\", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_7ba5bd90___WEBPACK_IMPORTED_MODULE_0__[\"render\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"staticRenderFns\", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_7ba5bd90___WEBPACK_IMPORTED_MODULE_0__[\"staticRenderFns\"]; });\n\n\n\n//# sourceURL=webpack:///./src/App.vue?");
+
+/***/ }),
+
+/***/ "./src/components/AdForm.vue":
+/*!***********************************!*\
+  !*** ./src/components/AdForm.vue ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _AdForm_vue_vue_type_template_id_f2b76392___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AdForm.vue?vue&type=template&id=f2b76392& */ \"./src/components/AdForm.vue?vue&type=template&id=f2b76392&\");\n/* harmony import */ var _AdForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AdForm.vue?vue&type=script&lang=js& */ \"./src/components/AdForm.vue?vue&type=script&lang=js&\");\n/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ \"./node_modules/vue-loader/lib/runtime/componentNormalizer.js\");\n\n\n\n\n\n/* normalize component */\n\nvar component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(\n  _AdForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  _AdForm_vue_vue_type_template_id_f2b76392___WEBPACK_IMPORTED_MODULE_0__[\"render\"],\n  _AdForm_vue_vue_type_template_id_f2b76392___WEBPACK_IMPORTED_MODULE_0__[\"staticRenderFns\"],\n  false,\n  null,\n  null,\n  null\n  \n)\n\n/* hot reload */\nif (false) { var api; }\ncomponent.options.__file = \"src/components/AdForm.vue\"\n/* harmony default export */ __webpack_exports__[\"default\"] = (component.exports);\n\n//# sourceURL=webpack:///./src/components/AdForm.vue?");
+
+/***/ }),
+
+/***/ "./src/components/AdForm.vue?vue&type=script&lang=js&":
+/*!************************************************************!*\
+  !*** ./src/components/AdForm.vue?vue&type=script&lang=js& ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _node_modules_vue_loader_lib_index_js_vue_loader_options_AdForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib??vue-loader-options!./AdForm.vue?vue&type=script&lang=js& */ \"./node_modules/vue-loader/lib/index.js?!./src/components/AdForm.vue?vue&type=script&lang=js&\");\n/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__[\"default\"] = (_node_modules_vue_loader_lib_index_js_vue_loader_options_AdForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[\"default\"]); \n\n//# sourceURL=webpack:///./src/components/AdForm.vue?");
+
+/***/ }),
+
+/***/ "./src/components/AdForm.vue?vue&type=template&id=f2b76392&":
+/*!******************************************************************!*\
+  !*** ./src/components/AdForm.vue?vue&type=template&id=f2b76392& ***!
+  \******************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdForm_vue_vue_type_template_id_f2b76392___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib??vue-loader-options!./AdForm.vue?vue&type=template&id=f2b76392& */ \"./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/AdForm.vue?vue&type=template&id=f2b76392&\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"render\", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdForm_vue_vue_type_template_id_f2b76392___WEBPACK_IMPORTED_MODULE_0__[\"render\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"staticRenderFns\", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdForm_vue_vue_type_template_id_f2b76392___WEBPACK_IMPORTED_MODULE_0__[\"staticRenderFns\"]; });\n\n\n\n//# sourceURL=webpack:///./src/components/AdForm.vue?");
 
 /***/ }),
 
@@ -161,7 +293,7 @@ eval("throw new Error(\"Module parse failed: Unexpected token (1:0)\\nYou may ne
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/vue/dist/vue.runtime.esm.js\");\n/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue */ \"./src/App.vue\");\n/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_App_vue__WEBPACK_IMPORTED_MODULE_1__);\n\r\n\r\n\r\nnew vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({\r\n\trender: h => h(_App_vue__WEBPACK_IMPORTED_MODULE_1___default.a)\r\n}).$mount('#page')\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/vue/dist/vue.runtime.esm.js\");\n/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue */ \"./src/App.vue\");\n/* harmony import */ var _dllcn_js_shortid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @dllcn/js-shortid */ \"./node_modules/@dllcn/js-shortid/lib/js-shortid.js\");\n/* harmony import */ var _dllcn_js_shortid__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_dllcn_js_shortid__WEBPACK_IMPORTED_MODULE_2__);\n\r\n\r\n\r\n\r\nvue__WEBPACK_IMPORTED_MODULE_0__[\"default\"].productionTip = false\r\n\r\nvue__WEBPACK_IMPORTED_MODULE_0__[\"default\"].prototype.guid = _dllcn_js_shortid__WEBPACK_IMPORTED_MODULE_2___default.a\r\n\r\nnew vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({\r\n\trender: h => h(_App_vue__WEBPACK_IMPORTED_MODULE_1__[\"default\"])\r\n}).$mount('#page')\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
