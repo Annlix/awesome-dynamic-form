@@ -1,6 +1,6 @@
 {
   "name": "awesome-dynamic-form",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Dynamic Vue form component.",
   "main": "index.js",
   "scripts": {
