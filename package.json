@@ -1,5 +1,5 @@
 {
-  "name": "dynamic-form",
+  "name": "awesome-dynamic-form",
   "version": "1.0.0",
   "description": "Dynamic Vue form component.",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Annlix/dynamic-form.git"
+    "url": "git+https://github.com/Annlix/awesome-dynamic-form.git"
   },
   "keywords": [
     "vue;dynamic-form;antdesign;bootstrap;element;form"
@@ -16,7 +16,7 @@
   "author": "Annlix",
   "license": "SEE LICENSE IN LICENSE",
   "bugs": {
-    "url": "https://github.com/Annlix/dynamic-form/issues"
+    "url": "https://github.com/Annlix/awesome-dynamic-form/issues"
   },
-  "homepage": "https://github.com/Annlix/dynamic-form#readme"
+  "homepage": "https://github.com/Annlix/awesome-dynamic-form#readme"
 }
