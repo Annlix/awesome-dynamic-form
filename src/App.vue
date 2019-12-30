@@ -96,9 +96,9 @@ export default {
             name: '单选' 
           },
           type: 'radio',
+          name: 'co',
           list: {
-            defaltValue: 'msft',
-            name: 'co',
+            // defaultValue: 'msft',
             options: [
               { title: 'Microsoft', value: 'msft' },
               { title: 'Google', value: 'gogl' },
@@ -112,12 +112,13 @@ export default {
             name: '多选'
           },
           type: 'checkbox',
+          name: 'fruit',
           list: {
-            defaltValue: ['apple', 'orange'],
+            // defaultValue: ['apple', 'orange'],
             options: [
               { title: 'Apple', value: 'apple' },
               { title: 'Orange', value: 'orange' },
-              { title: 'Banne', value: 'banne' },
+              { title: 'Banana', value: 'Banana' },
               { title: 'CocaCola', value: 'coca' }
             ]
           }

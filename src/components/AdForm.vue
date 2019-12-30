@@ -2,7 +2,7 @@
   <div>
     <form>
       <div v-for="item of forms" :key="item.guid" v-show="item.type !== 'hidden'">
-        <label v-if="['radio'].indexOf(item.type) == -1">
+        <label v-if="['radio', 'checkbox'].indexOf(item.type) == -1">
           {{item.label.name}} 
           <input 
             :type="item.type ? item.type : 'text'" 
@@ -37,12 +37,12 @@
           <!-- 文件上传 -->
           <input type="file" v-if="item.type === 'file'" accept="item.mime" />
         </label>
-        <!-- 单选 -->
-        <span v-if="item.type === 'radio'">
+        <!-- 单选、多选 -->
+        <span v-if="['radio', 'checkbox'].indexOf(item.type) >= 0">
           {{item.label.name}}
-          <label v-for='radio of item.radios.options' :key='radio.guid'>
-            <input type="radio" :value="radio.value" :name="item.radios.name" v-model="formData" />
-            {{radio.title}}
+          <label v-for='option of item.list.options' :key='option.guid'>
+            <input :type="item.type" :value="option.value" :name="item.name" />
+            {{option.title}}
           </label>
         </span>
       </div>
@@ -63,10 +63,11 @@ export default {
   },
   created () {
     this.forms.map(item => {
-      if (['radio'].indexOf(item.type) >= 0) {
+      if (['radio', 'checkbox'].indexOf(item.type) >= 0) {
         switch(item.type) {
           case 'radio':
-            item.radios.options.map(option => {
+          case 'checkbox':
+            item.list.options.map(option => {
               option.guid = guid.gen()
             })
             break;
